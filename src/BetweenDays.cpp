@@ -27,8 +27,34 @@ struct node{
 	int data;
 	struct node *next;
 };
-
+typedef struct node *lptr;
+int insertend(lptr p, int x);
 
 int between_days(struct node *date1head, struct node *date2head){
-	return -1;
+	lptr p = date1head, q = date2head;
+	if (p == NULL || q == NULL) return -1;
+	int l = insertend(p, p-> data);
+	int m = insertend(q, q->data);
+
+}
+int insertend(lptr p, int x)
+{
+	int l = 0,n=0,m=0;
+	while(l != 2)
+	{
+	int r= p->data;
+		n = n * 10 + r;
+		p = p->next;
+		l++;
+	}
+	while (l >= 2 && l <= 4)
+	{
+		int b = p->data;
+		m = m * 10 + b;
+		p = p->next;
+		l++;
+	}
+	return n;
+
+
 }
