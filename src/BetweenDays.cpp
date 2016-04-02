@@ -28,18 +28,35 @@ struct node{
 	struct node *next;
 };
 typedef struct node *lptr;
-int insertend(lptr p, int x);
-
+int insertend(lptr p);
+int insert1(lptr p);
+int corr(int oneday, int onemon, int oneyar);
 int between_days(struct node *date1head, struct node *date2head){
 	lptr p = date1head, q = date2head;
 	if (p == NULL || q == NULL) return -1;
-	int l = insertend(p, p-> data);
-	int m = insertend(q, q->data);
+
+	int l = insertend(p);
+	int m = insertend(q );
+	lptr j = date1head, q = date2head;
+	int t = insert1(p);
+	int g = insert1(q);
 
 }
-int insertend(lptr p, int x)
+int insert1(lptr p){
+	int l = 0,n=0;
+	while (l != 2)
+	{
+		int r = p->data;
+		n = n * 10 + r;
+		p = p->next;
+		l++;
+	}
+	return  n;
+
+}
+int insertend(lptr p)
 {
-	int l = 0,n=0,m=0;
+	int l = 0,n=0,m=0,k=0;
 	while(l != 2)
 	{
 	int r= p->data;
@@ -47,14 +64,74 @@ int insertend(lptr p, int x)
 		p = p->next;
 		l++;
 	}
-	while (l >= 2 && l <= 4)
+	while (l >= 2 && l <= 3)
 	{
 		int b = p->data;
 		m = m * 10 + b;
 		p = p->next;
 		l++;
 	}
-	return n;
+	while (l >= 4 && l <= 7)
+	{
+		int c = p->data;
+		k = k * 10 + c;
+		p=p->next;
+		l++;
+	}
+	int a = corr(n, m, k);
+	return a;
+}
+int corr(int oneday, int onemon, int oneyar)
+{
+	switch (onemon)
+	{
+	case 01:if (oneday <= 31 || oneday > 0)
+		return 31;
+			
+		break;
+
+	case 02:if (oneyar % 4 == 0 && (oneyar % 100 != 0 || oneyar % 400 == 0))
+	{
+		if (oneday <= 29 || oneday >0)
+			return 29;
+	}
+
+			else
+			{
+				if (oneday > 28 || oneday <= 0) return 28;
+			}
+
+			break;
+	case 03: if (oneday <= 31 || oneday > 0)  return 31;
+			
+		break;
+	case 04: if (oneday <= 30 || oneday > 0)  return 30;
+			 
+		break;
+	case 05: if (oneday <=31 || oneday > 0)  return 31;
+		break;
+	case 06: if (oneday <= 30 || oneday > 0)  return 30;
+			
+		break;
+	case 07: if (oneday <= 31 || oneday > 0)  return 31;
+			
+		break;
+	case 8:
+		if (oneday <= 31 || oneday > 0)  return 31;
+
+		break;
+	case 9: if (oneday <= 30 || oneday > 0)  return 30;
+		break;
+	case 10: if (oneday <=31 || oneday > 0)  return 31;
+			 
+		break;
+	case 11: if (oneday <= 30 || oneday > 0)  return 30;
+			 
+		break;
+	case 12: if (oneday <= 31 || oneday > 0)  return 31;
+			 
+		break;
 
 
+	}
 }
