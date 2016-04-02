@@ -45,6 +45,7 @@ int between_days(struct node *date1head, struct node *date2head){
 	int t = insert1(p);
 	int g = insert1(q);
 
+
 }
 int insert1(lptr p){
 	int l = 0,n=0;
@@ -55,7 +56,7 @@ int insert1(lptr p){
 		p = p->next;
 		l++;
 	}
-	return  n;
+	return n;
 
 }
 int insertend(lptr p)
