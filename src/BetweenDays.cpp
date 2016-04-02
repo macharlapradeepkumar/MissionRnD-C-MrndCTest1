@@ -33,11 +33,15 @@ int insert1(lptr p);
 int corr(int oneday, int onemon, int oneyar);
 int between_days(struct node *date1head, struct node *date2head){
 	lptr p = date1head, q = date2head;
+	lptr e, f;
+	e = p;
+	f = q;
 	if (p == NULL || q == NULL) return -1;
 
 	int l = insertend(p);
 	int m = insertend(q );
-	lptr j = date1head, q = date2head;
+	p = e;
+	q = f;
 	int t = insert1(p);
 	int g = insert1(q);
 
